@@ -7,6 +7,9 @@ import Login from './components/Login';
 import Logout from './components/Logout';
 import Signup from './components/Signup';
 import UsersList from './components/UsersList';
+import Principal from './components/Principal';
+import NewEmployee from './components/NewEmployee';
+import Employee from './components/Employee'
 
 export default
   <React.Fragment>
@@ -25,5 +28,14 @@ export default
     <Route
       exact path="/users"
       component={ UsersList } />
+    <Route
+      exact path="/NewEmployee"
+      component={NewEmployee} />
+    <Route
+      exact path="/Employee"
+      component={Employee} />
+    <Route
+      exact path="/Principal"
+      component={Principal} />
   </React.Fragment>
 ;
