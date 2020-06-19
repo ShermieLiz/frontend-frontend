@@ -3,10 +3,10 @@ import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import axios from 'axios';
 import {
-  Button,  
-  Form,  
+  Button,
+  Form,
   FormGroup,
-  Label,  
+  Label,
   Input,
   CardBody
 } from 'reactstrap';
@@ -61,13 +61,12 @@ const Login = () => {
       </Form>
       </CardBody>
       <div class="d-flex justify-content-center mt-5">
-      <a href="#" className="card-link text-white">Olvidaste tu contraseña?</a>
-     <a href="#" className="card-link text-white">Registrate</a>
-     </div>
+        <a href="#" className="card-link text-white">Olvidaste tu contraseña?</a>
+        <a href="#" className="card-link text-white">Registrate</a>
+      </div>
 
     </React.Fragment>
   );
 }
- 
+
 export default Login;
- 

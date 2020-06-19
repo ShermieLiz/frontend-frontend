@@ -1,0 +1,16 @@
+.texthome{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 30px;
+}
+.buttoncenter{
+    display: flex!important;
+    flex-direction: row!important;
+    justify-content: space-evenly!important;
+    padding: 10px!important;
+}
+.cardmargin{
+    margin: 20px;
+}
+
