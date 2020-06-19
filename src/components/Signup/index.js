@@ -47,7 +47,7 @@ import './index.css';
     }
     // Hacer una peticion POST al backend para registrar un usuario
     try {
-      await axios.post('https://cinta-negra-backend.herokuapp.com/api/v1/register', jsonSend);
+      await axios.post('https://dir-app.herokuapp.com/', jsonSend);
       alert('Successful signup');
     } catch (error) {
       alert('Error');

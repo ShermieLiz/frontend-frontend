@@ -22,7 +22,7 @@ const Login = () => {
     e.preventDefault();
     const jsonSend = { email, password };
     try {
-      const axiosRes = await axios.post('https://cinta-negra-backend.herokuapp.com/api/v1/login', jsonSend);
+      const axiosRes = await axios.post('https://dir-app.herokuapp.com/', jsonSend);
       const { token } = axiosRes.data;
       setTokenInLocalStorage(token);
       alert('Successful login');

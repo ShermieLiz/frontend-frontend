@@ -11,7 +11,7 @@ const UsersList = () => {
     const authorization = `Bearer ${getTokenInLocalStorage()}`;
     axios({
       method: 'get',
-      url: 'https://cinta-negra-backend.herokuapp.com/api/v1/users',
+      url: 'https://dir-app.herokuapp.com/',
       headers: {
         "Authorization": authorization,
       }
