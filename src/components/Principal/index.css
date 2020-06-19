@@ -1,0 +1,15 @@
+.texthome{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 30px;
+}
+.buttoncenter{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+.cardmargin{
+    margin: 20px;
+}

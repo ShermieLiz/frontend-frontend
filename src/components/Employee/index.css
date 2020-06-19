@@ -1,0 +1,16 @@
+.plusbutton{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+​
+.insidebuttona{
+    background-color: #343a40!important;
+    color: white;
+    font-style: oblique;
+    font-weight: 700;
+    font-size:  20px;
+    padding: 20px;
+    border-radius: 1rem!important;
+    line-height: 0!important;
+}
