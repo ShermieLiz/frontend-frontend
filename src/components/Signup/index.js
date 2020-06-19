@@ -13,41 +13,44 @@ import './index.css';
 
 
   const Signup = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState(null);
+  const [adress, setAdress] = useState('');
 
   const handleInput = (e) => {
     switch (e.target.name) {
-      case "inputFirstName":
-        setFirstName(e.target.value)
+      case "inputName":
+        setName(e.target.value)
         break;
-      case "lastName":
-        setLastName(e.target.value)
+        case "email":
+          setEmail(e.target.value)
+          break;
+          case "password":
+            setPassword(e.target.value)
+            break;
+        case "phoneNumber":
+        setPhoneNumber(e.target.value)
         break;
-      case "email":
-        setEmail(e.target.value)
+        case "adress":
+        setAdress(e.target.value)
         break;
-      case "password":
-        setPassword(e.target.value)
-        break;
-      default:
-        break;
-    }
+            }
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const jsonSend = {
-      first_name: firstName,
-      last_name: lastName,
-      email,
-      password,
+      name: name,
+      email: email,
+      password: password,
+      phone_number: phoneNumber,
+      adress: adress,
     }
     // Hacer una peticion POST al backend para registrar un usuario
     try {
-      await axios.post('https://dir-app.herokuapp.com/', jsonSend);
+      await axios.post('https://dirapplication.herokuapp.com/api/v1/register', jsonSend);
       alert('Successful signup');
     } catch (error) {
       alert('Error');
@@ -61,26 +64,14 @@ import './index.css';
       <h1 className="titulo" className="h4 text-center mb-4">Registra tu empresa</h1>
       <Form className="form" onSubmit={handleSubmit}>
         <FormGroup className="FormGroup">
-          <Label>First Name</Label>
+          <Label>Name</Label>
           <Input  className="rounded-pill bg-dark text-white"
             type="text"
-            id="firstName"
-            name="inputFirstName" 
-            placeholder="type your first name"
-            value={firstName}
+            id="Name"
+            name="inputName" 
+            placeholder="Razón social"
+            value={name}
             onChange={handleInput} />
-        </FormGroup>
-        <FormGroup>
-          <Label>Last Name</Label>
-          <Input
-          className="rounded-pill bg-dark text-white"
-            type="text" 
-            name="lastName" 
-            id="inputLastname" 
-            placeholder="type your last name"
-            value={lastName}
-            onChange={handleInput}
-            ></Input>
         </FormGroup>
         <FormGroup>
           <Label>Email</Label>
@@ -89,7 +80,7 @@ import './index.css';
             type="email"
             name="email"
             id="exampleEmail"
-            placeholder="type your email"
+            placeholder="Email de contacto"
             value={email}
             onChange={handleInput} />
         </FormGroup>
@@ -99,9 +90,33 @@ import './index.css';
             type="password"
             name="password"
             id="examplePassword"
-            placeholder="type your password here" 
+            placeholder="Contraseña segura*" 
             value={password}
             onChange={handleInput} />
+        </FormGroup>
+        <FormGroup>
+          <Label>Numero de celular</Label>
+          <Input
+          className="rounded-pill bg-dark text-white"
+            type="Number" 
+            name="phoneNumber" 
+            id="inputphoneNumber" 
+            placeholder="teléfono o celurar de tu empresa"
+            value={phoneNumber}
+            onChange={handleInput}
+            ></Input>
+        </FormGroup>
+        <FormGroup>
+          <Label>Dirección</Label>
+          <Input
+          className="rounded-pill bg-dark text-white"
+            type="text" 
+            name="adress" 
+            id="inputadress" 
+            placeholder="Dirección incluyendo ciudad y país"
+            value={adress}
+            onChange={handleInput}
+            ></Input>
         </FormGroup>
         <Button className="mt-4 d-flex align-item-center p-3 mx-auto rounded-pill" color="primary" type="submit" pill>Registrar</Button>
       </Form>

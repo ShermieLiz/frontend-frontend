@@ -11,7 +11,7 @@ const UsersList = () => {
     const authorization = `Bearer ${getTokenInLocalStorage()}`;
     axios({
       method: 'get',
-      url: 'https://dir-app.herokuapp.com/',
+      url: 'https://sheltered-spire-81743.herokuapp.com/',
       headers: {
         "Authorization": authorization,
       }

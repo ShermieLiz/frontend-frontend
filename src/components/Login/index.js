@@ -22,7 +22,7 @@ const Login = () => {
     e.preventDefault();
     const jsonSend = { email, password };
     try {
-      const axiosRes = await axios.post('https://dir-app.herokuapp.com/', jsonSend);
+      const axiosRes = await axios.post('https://dirapplication.herokuapp.com/api/v1/login', jsonSend);
       const { token } = axiosRes.data;
       setTokenInLocalStorage(token);
       alert('Successful login');
@@ -44,10 +44,10 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             id="exampleEmail"
-            placeholder="type your email" />
+            placeholder="Email de la empresa" />
         </FormGroup>
         <FormGroup>
-          <Label>Password</Label>
+          <Label>Contraseña</Label>
           <Input 
           className="rounded-pill bg-dark text-white"
             type="password"
@@ -55,7 +55,7 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             id="examplePassword"
-            placeholder="type your password here" />
+            placeholder="Contraseña segura*" />
         </FormGroup>
         <Button className="mt-4 d-flex align-item-center p-3 mx-auto rounded-pill" color="primary" type="submit" pill>Entrar</Button>
       </Form>
