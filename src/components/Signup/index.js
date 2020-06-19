@@ -7,7 +7,6 @@ import {
   Label,  
   Input,
   CardBody,
-  CardImg
 } from 'reactstrap'; 
 import './index.css';
 
@@ -16,7 +15,7 @@ import './index.css';
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState(null);
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [adress, setAdress] = useState('');
 
   const handleInput = (e) => {
@@ -25,11 +24,11 @@ import './index.css';
         setName(e.target.value)
         break;
         case "email":
-          setEmail(e.target.value)
-          break;
-          case "password":
-            setPassword(e.target.value)
-            break;
+        setEmail(e.target.value)
+        break;
+        case "password":
+        setPassword(e.target.value)
+        break;
         case "phoneNumber":
         setPhoneNumber(e.target.value)
         break;
@@ -48,6 +47,7 @@ import './index.css';
       phone_number: phoneNumber,
       adress: adress,
     }
+    console.log(jsonSend);
     // Hacer una peticion POST al backend para registrar un usuario
     try {
       await axios.post('https://dirapplication.herokuapp.com/api/v1/register', jsonSend);
@@ -61,7 +61,7 @@ import './index.css';
   return (
     <React.Fragment>
       <CardBody className="p-3 mb-2 bg-dark text-white rounded">
-      <h1 className="titulo" className="h4 text-center mb-4">Registra tu empresa</h1>
+      <h1 className="titulo h4 text-center mb-4">Registra tu empresa</h1>
       <Form className="form" onSubmit={handleSubmit}>
         <FormGroup className="FormGroup">
           <Label>Name</Label>
@@ -104,7 +104,7 @@ import './index.css';
             placeholder="teléfono o celurar de tu empresa"
             value={phoneNumber}
             onChange={handleInput}
-            ></Input>
+            />
         </FormGroup>
         <FormGroup>
           <Label>Dirección</Label>
@@ -116,9 +116,9 @@ import './index.css';
             placeholder="Dirección incluyendo ciudad y país"
             value={adress}
             onChange={handleInput}
-            ></Input>
+            />
         </FormGroup>
-        <Button className="mt-4 d-flex align-item-center p-3 mx-auto rounded-pill" color="primary" type="submit" pill>Registrar</Button>
+        <Button className="mt-4 d-flex align-item-center p-3 mx-auto rounded-pill" color="primary" type="submit">Registrar</Button>
       </Form>
       </CardBody >
     </React.Fragment>
