@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import {
   Button,
@@ -15,6 +16,7 @@ const Login = () => {
   const { setTokenInLocalStorage, isAuth } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
 
   if (isAuth) return <Redirect to="/" />
 
@@ -26,6 +28,7 @@ const Login = () => {
       const { token } = axiosRes.data;
       setTokenInLocalStorage(token);
       alert('Successful login');
+      history.push ("/Principal");
     } catch (error) {
       alert('Error on login');
     }
@@ -57,7 +60,9 @@ const Login = () => {
             id="examplePassword"
             placeholder="Contraseña segura*" />
         </FormGroup>
+
         <Button className="mt-4 d-flex align-item-center p-3 mx-auto rounded-pill" color="primary" type="submit" pill>Entrar</Button>
+
       </Form>
       </CardBody>
       <div class="d-flex justify-content-center mt-5">

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import {
   Button,  
@@ -17,6 +19,7 @@ import './index.css';
   const [password, setPassword] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [adress, setAdress] = useState('');
+  const history = useHistory();
 
   const handleInput = (e) => {
     switch (e.target.name) {
@@ -52,11 +55,13 @@ import './index.css';
     try {
       await axios.post('https://dirapplication.herokuapp.com/api/v1/register', jsonSend);
       alert('Successful signup');
+      history.push ("/login");
     } catch (error) {
       alert('Error');
     }
     
   }
+  
 
   return (
     <React.Fragment>

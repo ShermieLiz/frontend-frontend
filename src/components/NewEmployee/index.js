@@ -1,6 +1,6 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 import { Link } from 'react-router-dom';
 import {
@@ -21,15 +21,15 @@ const NewEmployee = () => {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [workspace, setWorkspace] = useState('');
+    const history = useHistory();
 
 
     const handleInput = (e) => {
         switch (e.target.name) {
-            case "inputFirstName":
+            case "inputfirstName":
                 setFirstName(e.target.value)
                 break;
-            case "LastName":
+            case "inputlastName":
                 setLastName(e.target.value)
                 break;
             case "email":
@@ -38,37 +38,34 @@ const NewEmployee = () => {
             case "password":
                 setPassword(e.target.value)
                 break;
-            case "workspace":
-                setWorkspace(e.target.value)
-                break;
         }
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const jsonSend = {
-            first_Name: firstName,
-            last_Name: lastName,
+            first_name: firstName,
+            last_name: lastName,
             email,
             password,
-            workspace,
         }
         console.log(jsonSend);
         // Hacer una peticion POST al backend para registrar un usuario
         try {
-            await axios.post('https://dirapplication.herokuapp.com/api/v1/resgister-users', jsonSend);
-            alert('Successful signup');
+            await axios.post('https://dirapplication.herokuapp.com/api/v1/register-user', jsonSend);
+            alert('Successful register');
+            history.push ("/Employee");
         } catch (error) {
             alert('Error');
         }
 
     }
-}
+
 
 return (
     <React.Fragment>
         <CardBody className="p-3 mb-2 bg-dark text-white rounded">
-            <h1 className="titulo h4 text-center mb-4">Registra tu empresa</h1>
+            <h1 className="titulo h4 text-center mb-4">Registra a los empleados</h1>
             <Form className="form" onSubmit={handleSubmit}>
                 <FormGroup className="FormGroup">
                     <Label>Name</Label>
@@ -76,18 +73,18 @@ return (
                         type="text"
                         id="firstName"
                         name="inputfirstName"
-                        placeholder="Razón social"
+                        placeholder="Nombre"
                         value={firstName}
                         onChange={handleInput} />
                 </FormGroup>
                 <FormGroup className="FormGroup">
-                    <Label>Name</Label>
+                    <Label>Apellido</Label>
                     <Input className="rounded-pill bg-dark text-white"
                         type="text"
                         id="lastName"
                         name="inputlastName"
-                        placeholder="Razón social"
-                        value={firstName}
+                        placeholder="Apellido"
+                        value={lastName}
                         onChange={handleInput} />
                 </FormGroup>
                 <FormGroup>
@@ -102,7 +99,7 @@ return (
                         onChange={handleInput} />
                 </FormGroup>
                 <FormGroup>
-                    <Label>Password</Label>
+                    <Label>Contraseña</Label>
                     <Input className="rounded-pill bg-dark text-white"
                         type="password"
                         name="password"
@@ -111,24 +108,14 @@ return (
                         value={password}
                         onChange={handleInput} />
                 </FormGroup>
-                <FormGroup>
-                    <Label>Workspace</Label>
-                    <Input
-                        className="rounded-pill bg-dark text-white"
-                        type="text"
-                        name="workspace"
-                        id="inputworkspace"
-                        placeholder="teléfono o celurar de tu empresa"
-                        value={workspace}
-                        onChange={handleInput}
-                    />
-                </FormGroup>
+
                 <Button className="mt-4 d-flex align-item-center p-3 mx-auto rounded-pill" color="primary" type="submit">Registrar</Button>
             </Form>
         </CardBody >
     </React.Fragment>
 );
-
+}
+export default NewEmployee;
 
 
 /* return (
@@ -192,4 +179,3 @@ return (
     </React.Fragment> */
 
 
-export default NewEmployee;
